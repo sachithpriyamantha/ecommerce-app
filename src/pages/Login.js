@@ -1,10 +1,12 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: { email: '', password: '' },
@@ -13,7 +15,8 @@ const Login = () => {
       password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
     }),
     onSubmit: (values) => {
-      login(values.email); // Simulate login
+      login(values.email);
+      navigate('/products');
     },
   });
 

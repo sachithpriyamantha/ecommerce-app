@@ -1,20 +1,25 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const { login } = useAuth(); // Use the same login function for simplicity
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: { name: '', email: '', password: '' },
     validationSchema: Yup.object({
-      name: Yup.string().required('Required'),
-      email: Yup.string().email('Invalid email').required('Required'),
-      password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
+      name: Yup.string().required('Name is required'),
+      email: Yup.string().email('Invalid email').required('Email is required'),
+      password: Yup.string()
+        .min(6, 'Password must be at least 6 characters')
+        .required('Password is required'),
     }),
     onSubmit: (values) => {
-      login(values.email); // Simulate registration and login
+      login(values.email);
+      navigate('/products');
     },
   });
 
