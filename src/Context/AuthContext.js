@@ -1,27 +1,51 @@
-import React, { createContext, useState, useContext } from "react";
+// import React, { createContext, useState, useContext } from "react";
+
+// const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+//     const [user, setUser] = useState(null);
+
+//     const login = (email, password) => {
+//         setUser({ email });
+//     };
+
+//     const register = (name, email, password) => {
+//         setUser({ name, email });
+//     };
+
+//     const logout = () => {
+//         setUser(null);
+//     };
+
+//     return (
+//         <AuthContext.Provider value={{ user, login, register, logout }}>
+//             {children}
+//         </AuthContext.Provider>
+//     );
+// };
+
+// export const useAuth = () => useContext(AuthContext);
+
+
+
+import React, { createContext, useState, useContext } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
-    const login = (email, password) => {
-        setUser({ email });
-    };
+  const login = (email, password) => {
+    setUser({ email }); // Simulated login
+  };
 
-    const register = (name, email, password) => {
-        setUser({ name, email });
-    };
+  const logout = () => setUser(null);
 
-    const logout = () => {
-        setUser(null);
-    };
-
-    return (
-        <AuthContext.Provider value={{ user, login, register, logout }}>
-            {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => useContext(AuthContext);
