@@ -50,79 +50,75 @@ const Cart = () => {
           <Table>
             <TableHead>
               <TableRow sx={{ backgroundColor: 'primary.light' }}>
-                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>
-                  Product
-                </TableCell>
-                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>
-                  Price
-                </TableCell>
-                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>
-                  Quantity
-                </TableCell>
-                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>
-                  Total
-                </TableCell>
-                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>
-                  Actions
-                </TableCell>
+                <TableCell align="left" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>Product</TableCell>
+                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>Price</TableCell>
+                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>Quantity</TableCell>
+                <TableCell align="right" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>Total</TableCell>
+                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>Actions</TableCell>
               </TableRow>
             </TableHead>
+
             <TableBody>
               <AnimatePresence>
                 {cart.map((item, index) => (
-                  <motion.tr
+                  <TableRow
                     key={item.id}
+                    component={motion.tr}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
-                    layout
+                    sx={{
+                      backgroundColor: index % 2 === 0 ? '#f5f5f5' : '#ffffff',
+                      '&:hover': { backgroundColor: '#f0f0f0' },
+                    }}
                   >
-                    <TableRow
-                      sx={{
-                        backgroundColor: index % 2 === 0 ? '#f5f5f5' : '#ffffff',
-                        '&:hover': { backgroundColor: '#f0f0f0' },
-                      }}
-                    >
-                      <TableCell align="center">{item.name}</TableCell>
-                      <TableCell align="center">${item.price}</TableCell>
-                      <TableCell align="center">
-                        <TextField
-                          type="number"
+                    {/* Product */}
+                    <TableCell align="left">{item.name}</TableCell>
+
+                    {/* Price */}
+                    <TableCell align="center">${item.price}</TableCell>
+
+                    {/* Quantity */}
+                    <TableCell align="center">
+                      <TextField
+                        type="number"
+                        variant="outlined"
+                        size="small"
+                        value={item.quantity}
+                        onChange={(e) => updateQuantity(item.id, +e.target.value)}
+                        inputProps={{ min: 1 }}
+                        sx={{ width: '70px' }}
+                      />
+                    </TableCell>
+
+                    {/* Total */}
+                    <TableCell align="right">
+                      ${item.price * item.quantity}
+                    </TableCell>
+
+                    {/* Actions */}
+                    <TableCell align="center">
+                      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                        <Button
                           variant="outlined"
-                          size="small"
-                          value={item.quantity}
-                          onChange={(e) => updateQuantity(item.id, +e.target.value)}
-                          inputProps={{ min: 1 }}
-                          sx={{ width: '70px' }}
-                        />
-                      </TableCell>
-                      <TableCell align="center">
-                        ${item.price * item.quantity}
-                      </TableCell>
-                      <TableCell align="center">
-                        <motion.div
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
+                          color="error"
+                          onClick={() => removeFromCart(item.id)}
+                          sx={{
+                            transition: 'background-color 0.3s',
+                            '&:hover': { backgroundColor: 'error.main', color: 'white' },
+                          }}
                         >
-                          <Button
-                            variant="outlined"
-                            color="error"
-                            onClick={() => removeFromCart(item.id)}
-                            sx={{
-                              transition: 'background-color 0.3s',
-                              '&:hover': { backgroundColor: 'error.main', color: 'white' },
-                            }}
-                          >
-                            Remove
-                          </Button>
-                        </motion.div>
-                      </TableCell>
-                    </TableRow>
-                  </motion.tr>
+                          Remove
+                        </Button>
+                      </motion.div>
+                    </TableCell>
+                  </TableRow>
                 ))}
               </AnimatePresence>
             </TableBody>
+
+
           </Table>
         </TableContainer>
       )}

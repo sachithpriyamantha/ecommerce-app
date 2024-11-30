@@ -13,12 +13,12 @@ import {
 import { motion } from 'framer-motion';
 
 const products = [
-  { id: 1, name: 'Product 1', price: 100, description: 'High-quality item', image: 'https://img.drz.lazcdn.com/g/kf/S7cbe22470531457ab26daaca2c3aa723B.jpeg_400x400q80.jpg_.webp' },
-  { id: 2, name: 'Product 2', price: 200, description: 'Durable and reliable', image: 'https://via.placeholder.com/150' },
-  { id: 3, name: 'Product 3', price: 150, description: 'Affordable and efficient', image: 'https://via.placeholder.com/150' },
-  { id: 4, name: 'Product 4', price: 100, description: 'High-quality item', image: 'https://via.placeholder.com/150' },
-  { id: 5, name: 'Product 5', price: 200, description: 'Durable and reliable', image: 'https://via.placeholder.com/150' },
-  { id: 6, name: 'Product 6', price: 150, description: 'Affordable and efficient', image: 'https://via.placeholder.com/150' },
+  { id: 1, name: 'Side bag', price: 10, description: 'High-quality item', image: 'https://img.drz.lazcdn.com/g/kf/S7cbe22470531457ab26daaca2c3aa723B.jpeg_400x400q80.jpg_.webp' },
+  { id: 2, name: 'Inpods pro Air 13 pods', price: 15, description: 'Durable and reliable', image: 'https://img.drz.lazcdn.com/static/lk/p/32d7ee2b39f1cd47a7cdb2a4c5b31b90.jpg_400x400q80.jpg' },
+  { id: 3, name: 'Bag for Men with Large Capacity', price: 11, description: 'Affordable and efficient', image: 'https://img.drz.lazcdn.com/g/kf/S337e40a7f10e46cbb482e9afb8d92e0aY.jpg_400x400q80.jpg_.webp' },
+  { id: 4, name: 'Smart Watch T900 Ultra ', price: 20, description: 'High-quality item', image: 'https://img.drz.lazcdn.com/static/lk/p/891c2ddbc42c7dda30d5d6380cba4d3f.jpg_400x400q80.jpg_.webp' },
+  { id: 5, name: 'Female Designers Minority Rings', price: 158, description: 'Durable and reliable', image: 'https://img.drz.lazcdn.com/g/kf/Sf598f905328844c4bcac51b125959b1bP.jpg_400x400q75.jpg_.webp' },
+  { id: 6, name: 'For iPhone 16 ', price: 999, description: 'Affordable and efficient', image: 'https://img.drz.lazcdn.com/static/lk/p/c3bea0fba0adaa44d2375460a676b91d.jpg_400x400q80.jpg_.webp' },
 ];
 
 const Products = () => {
