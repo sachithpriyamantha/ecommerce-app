@@ -1,122 +1,175 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Box, Typography, Button, Stack, Container } from '@mui/material';
+import React from "react";
+import { Box, Typography, Grid, Button } from "@mui/material";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
-const Home = () => {
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        textAlign: 'center',
-        background: 'linear-gradient(to right, #6ee7b7, #3b82f6)',
-        padding: 3,
-        overflow: 'hidden',
-        backgroundAttachment: 'fixed',
-      }}
-    >
-      <Container
-        maxWidth="sm"
-        sx={{
-          background: 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(15px)',
-          borderRadius: 5,
-          padding: 4,
-          boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)',
-        }}
-      >
-        <Typography
-          variant="h3"
-          component="h1"
-          sx={{
-            mb: 3,
-            fontWeight: '700',
-            color: '#1e40af',
-            fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
-            lineHeight: 1.2,
-          }}
-        >
-          Welcome to the E-Commerce App
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            mb: 4,
-            color: '#4b5563',
-            fontSize: { xs: '1rem', sm: '1.25rem' },
-            lineHeight: 1.6,
-          }}
-        >
-          Discover amazing deals and exclusive products tailored just for you. Enjoy a seamless shopping experience.
-        </Typography>
-        <Stack direction="column" spacing={3} alignItems="center">
-          <Stack direction="row" spacing={2} justifyContent="center">
-            <Button
-              component={Link}
-              to="/login"
-              variant="contained"
-              color="primary"
-              size="large"
-              sx={{
-                textTransform: 'none',
-                px: 6,
-                borderRadius: 8,
-                boxShadow: '0 6px 12px rgba(0, 0, 0, 0.15)',
-                transition: 'transform 0.3s ease-in-out, background-color 0.3s',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                  backgroundColor: '#2563eb',
-                },
-              }}
-            >
-              Login
-            </Button>
-            <Button
-              component={Link}
-              to="/register"
-              variant="outlined"
-              color="secondary"
-              size="large"
-              sx={{
-                textTransform: 'none',
-                px: 6,
-                borderColor: '#2563eb',
-                color: '#2563eb',
-                borderRadius: 8,
-                '&:hover': {
-                  borderColor: '#2563eb',
-                  backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                  color: '#2563eb',
-                },
-              }}
-            >
-              Register
-            </Button>
-          </Stack>
-          <Button
-            component={Link}
-            to="/products"
-            variant="contained"
-            color="success"
-            size="large"
+const HomePage = () => {
+    const products = [
+        {
+            name: "Smartphone",
+            image: "https://img.drz.lazcdn.com/static/lk/p/c3bea0fba0adaa44d2375460a676b91d.jpg_400x400q80.jpg_.webp",
+            price: "$999",
+        },
+        {
+            name: "Wireless Earbuds",
+            image: "https://img.drz.lazcdn.com/static/lk/p/32d7ee2b39f1cd47a7cdb2a4c5b31b90.jpg_400x400q80.jpg",
+            price: "$15",
+        },
+        {
+            name: "Smartwatch",
+            image: "https://img.drz.lazcdn.com/static/lk/p/891c2ddbc42c7dda30d5d6380cba4d3f.jpg_400x400q80.jpg_.webp",
+            price: "$20",
+        },
+        {
+            name: "Laptop",
+            image: "https://img.drz.lazcdn.com/static/lk/p/c70f0725e7a24d1955797f9e0df7a779.jpg_200x200q80.jpg_.webp",
+            price: "$799.99",
+        },
+    ];
+
+    return (
+        <Box
             sx={{
-              textTransform: 'none',
-              px: 8,
-              background: 'linear-gradient(90deg, #10b981, #22d3ee)',
-              borderRadius: 8,
-              '&:hover': {
-                background: 'linear-gradient(90deg, #047857, #14b8a6)',
-              },
+                minHeight: "100vh",
+                backgroundImage: "url('https://www.microbizmag.co.uk/wp-content/uploads/2024/01/ecommerce-statistics-1024x574.webp')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 3,
+                gap: 4,
+                position: "relative",
             }}
-          >
-            View Products
-          </Button>
-        </Stack>
-      </Container>
-    </Box>
-  );
+        >
+            <Box
+                sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    zIndex: 1,
+                }}
+            />
+
+            {/* Hero Section */}
+            <Box
+                sx={{ textAlign: "center", color: "white", zIndex: 2 }}
+            >
+                <Typography
+                    variant="h2"
+                    component={motion.div}
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
+                    sx={{
+                        fontWeight: "bold",
+                        fontSize: { xs: "2rem", md: "3.5rem" },
+                        textShadow: "2px 2px 8px rgba(0, 0, 0, 0.7)",
+                    }}
+                >
+                    Welcome to TrendyShop
+                </Typography>
+                <Typography
+                    variant="subtitle1"
+                    component={motion.div}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    sx={{
+                        mt: 2,
+                        textShadow: "1px 1px 6px rgba(0, 0, 0, 0.7)",
+                    }}
+                >
+                    Explore the future of shopping, one click at a time.
+                </Typography>
+                <Button
+                    variant="contained"
+                    to="/products"
+                    color="secondary"
+                    component={Link}
+                    sx={{
+                        mt: 3,
+                        px: 4,
+                        py: 1.5,
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                    }}
+                >
+                    Start Shopping
+                </Button>
+            </Box>
+
+            <Typography
+                variant="h4"
+                sx={{
+                    color: "white",
+                    textAlign: "center",
+                    zIndex: 2,
+                    textShadow: "2px 2px 8px rgba(0, 0, 0, 0.7)",
+                }}
+                component={motion.div}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+            >
+                Latest Products
+            </Typography>
+            <Grid container spacing={4} justifyContent="center" sx={{ zIndex: 2 }}>
+                {products.map((product, index) => (
+                    <Grid
+                        item
+                        xs={12}
+                        sm={6}
+                        md={3}
+                        key={index}
+                        component={motion.div}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                    >
+                        <Box
+                            sx={{
+                                width: "330px",
+                                height: "410px",
+                                borderRadius: 3,
+                                overflow: "hidden",
+                                boxShadow: 8,
+                                backgroundColor: "#f9f9f9",
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "space-between",
+                            }}
+                        >
+                            <img
+                                src={product.image}
+                                alt={product.name}
+                                style={{ width: "100%", display: "block", height: "65%", objectFit: "cover" }}
+                            />
+                            <Box sx={{ p: 2, textAlign: "center" }}>
+                                <Typography variant="h6" sx={{ fontWeight: "bold", color: "#333" }}>
+                                    {product.name}
+                                </Typography>
+                                <Typography variant="body1" sx={{ fontWeight: "medium", color: "#777" }}>
+                                    {product.price}
+                                </Typography>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    sx={{ mt: 2, px: 3, fontSize: "0.9rem" }}
+                                >
+                                    Buy Now
+                                </Button>
+                            </Box>
+                        </Box>
+                    </Grid>
+                ))}
+            </Grid>
+        </Box>
+
+    );
 };
 
-export default Home;
+export default HomePage;

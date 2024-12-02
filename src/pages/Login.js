@@ -31,7 +31,7 @@ const Login = () => {
       setSubmitting(true);
       setTimeout(() => {
         login(values.email);
-        navigate('/products');
+        navigate('/home');
         setSubmitting(false);
       }, 1000);
     },
