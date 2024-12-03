@@ -24,6 +24,9 @@ const products = [
   { id: 4, name: 'Smart Watch T900 Ultra', price: 20, description: 'High-quality item', image: 'https://img.drz.lazcdn.com/static/lk/p/891c2ddbc42c7dda30d5d6380cba4d3f.jpg_400x400q80.jpg_.webp' },
   { id: 5, name: 'Female Designers Minority Rings', price: 158, description: 'Durable and reliable', image: 'https://img.drz.lazcdn.com/g/kf/Sf598f905328844c4bcac51b125959b1bP.jpg_400x400q75.jpg_.webp' },
   { id: 6, name: 'For iPhone 16', price: 999, description: 'Affordable and efficient', image: 'https://img.drz.lazcdn.com/static/lk/p/c3bea0fba0adaa44d2375460a676b91d.jpg_400x400q80.jpg_.webp' },
+  { id: 7, name: 'Apple Macbook', price: 1050, description: 'High-quality item', image: 'https://img.drz.lazcdn.com/static/lk/p/992ca4ec74d378d4b656ea5ba8f7bdcb.jpg_400x400q75.jpg_.webp' },
+  { id: 8, name: 'Air Humidifier Home Decor', price: 5, description: 'High-quality item', image: 'https://img.drz.lazcdn.com/collect/sg/other/roc/f502a4da9a7b87170ca79f387ed8f31d.jpg_1200x1200q80.jpg_.webp' },
+  { id: 9, name: 'Christmas Tree', price: 4, description: 'ffordable and efficient', image: 'https://img.drz.lazcdn.com/static/lk/p/5249dfc82bc4ccca5e3a185fbfd73822.png_400x400q80.png' },
 ];
 
 const Products = () => {

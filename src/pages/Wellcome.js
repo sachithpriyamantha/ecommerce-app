@@ -8,10 +8,12 @@ const Home = () => {
       sx={{
         display: 'flex',
         alignItems: 'center',
+        backgroundImage: "url('https://www.microbizmag.co.uk/wp-content/uploads/2024/01/ecommerce-statistics-1024x574.webp')",
         justifyContent: 'center',
         height: '100vh',
+        backgroundSize: "cover",
         textAlign: 'center',
-        background: 'linear-gradient(to right, #6ee7b7, #3b82f6)',
+        //background: 'linear-gradient(to right, #6ee7b7, #3b82f6)',
         padding: 3,
         overflow: 'hidden',
         backgroundAttachment: 'fixed',

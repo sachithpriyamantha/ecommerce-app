@@ -26,19 +26,19 @@ const HomePage = () => {
             price: "$799.99",
         },
         {
-            name: "Smartwatch",
-            image: "https://img.drz.lazcdn.com/static/lk/p/891c2ddbc42c7dda30d5d6380cba4d3f.jpg_400x400q80.jpg_.webp",
-            price: "$20",
+            name: "Lifestyle Books",
+            image: "https://img.drz.lazcdn.com/static/lk/p/8f12b6c5d75dfbe165a6ceb7541307b7.jpg_170x170q80.jpg",
+            price: "$14",
         },
         {
-            name: "Wireless Earbuds",
-            image: "https://img.drz.lazcdn.com/static/lk/p/32d7ee2b39f1cd47a7cdb2a4c5b31b90.jpg_400x400q80.jpg",
-            price: "$15",
+            name: "Table Lamps",
+            image: "https://img.drz.lazcdn.com/g/kf/Sc4715a0143e347b9b2ba3a1fdc815fb36.jpg_170x170q80.jpg",
+            price: "$11",
         },
         {
-            name: "Smartphone",
-            image: "https://img.drz.lazcdn.com/static/lk/p/c3bea0fba0adaa44d2375460a676b91d.jpg_400x400q80.jpg_.webp",
-            price: "$999",
+            name: "Electric Knives",
+            image: "https://img.drz.lazcdn.com/static/lk/p/e2bb93ed339c28a3f81a59a7726b7e3d.png_170x170q80.png",
+            price: "$4",
         },
     ];
 
