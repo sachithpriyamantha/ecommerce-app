@@ -25,29 +25,37 @@ const Navbar = () => {
   }
 
   return (
-    <AppBar position="fixed" sx={{ bgcolor: 'primary.main' }}>
-      <Toolbar>
+    <AppBar position="fixed" sx={{
+      background: 'linear-gradient(to right, #6a11cb, #2575fc)',
+      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
+    }}
+  >
+      <Toolbar sx={{
+          justifyContent: 'space-between',
+          padding: { xs: '0 16px', md: '0 32px' },
+        }}>
         <Typography
-          variant="h6"
+          variant="h5"
           component={Link}
           to="/"
           sx={{
-            flexGrow: 1,
             textDecoration: 'none',
-            color: 'inherit',
+            color: 'white',
             fontWeight: 'bold',
+            fontFamily: 'Roboto, sans-serif',
           }}
         >
-          E-Commerce Website
+          TrendyShop
         </Typography>
-        <Box sx={{ display: 'flex', gap: 2 }}>
+        <Box sx={{ display: 'flex', gap: 3 }}>
           <Button
             component={Link}
             to="/home"
             sx={{
               color: 'white',
               textTransform: 'none',
-              '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.1)' },
+              fontWeight: 'bold',
+              '&:hover': { background: 'rgba(255, 255, 255, 0.2)' },
             }}
           >
             Home
@@ -58,7 +66,8 @@ const Navbar = () => {
             sx={{
               color: 'white',
               textTransform: 'none',
-              '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.1)' },
+              fontWeight: 'bold',
+              '&:hover': { background: 'rgba(255, 255, 255, 0.2)' },
             }}
           >
             Products
@@ -69,7 +78,8 @@ const Navbar = () => {
             sx={{
               color: 'white',
               textTransform: 'none',
-              '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.1)' },
+              fontWeight: 'bold',
+              '&:hover': { background: 'rgba(255, 255, 255, 0.2)' },
             }}
           >
             Cart

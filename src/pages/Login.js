@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useAuth } from '../Context/AuthContext';
@@ -10,9 +10,8 @@ import {
   Typography,
   Paper,
   CircularProgress,
-  Divider,
   InputAdornment,
-  IconButton,
+  Alert,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Email, Lock } from '@mui/icons-material';
@@ -20,20 +19,35 @@ import { Email, Lock } from '@mui/icons-material';
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const formik = useFormik({
     initialValues: { email: '', password: '' },
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid email').required('Required'),
-      password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
+      password: Yup.string()
+        .min(6, 'Password must be at least 6 characters')
+        .matches(/[A-Z]/, 'Password must have at least one uppercase letter')
+        .matches(/[a-z]/, 'Password must have at least one lowercase letter')
+        .matches(/\d/, 'Password must have at least one number')
+        .required('Required'),
     }),
-    onSubmit: (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting }) => {
       setSubmitting(true);
-      setTimeout(() => {
-        login(values.email);
-        navigate('/home');
+      setError('');
+      setSuccess('');
+      try {
+        await login(values.email, values.password); // Assuming `login` accepts email and password
+        setSuccess('Login successful!');
+        setTimeout(() => {
+          navigate('/home');
+        }, 1200); // Navigate after 2 seconds
+      } catch (err) {
+        setError('Invalid email or password. Please try again.');
+      } finally {
         setSubmitting(false);
-      }, 1000);
+      }
     },
   });
 
@@ -81,6 +95,8 @@ const Login = () => {
         <Typography variant="body2" sx={{ mb: 4, color: 'text.secondary' }}>
           Welcome back! Please log in to your account.
         </Typography>
+        {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+        {success && <Alert severity="success" sx={{ mb: 2 }}>{success}</Alert>}
         <form onSubmit={formik.handleSubmit}>
           <Box mb={3}>
             <TextField
@@ -171,7 +187,6 @@ const Login = () => {
             )}
           </Button>
         </form>
-      
       </Paper>
     </Box>
   );

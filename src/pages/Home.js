@@ -25,6 +25,21 @@ const HomePage = () => {
             image: "https://img.drz.lazcdn.com/static/lk/p/c70f0725e7a24d1955797f9e0df7a779.jpg_200x200q80.jpg_.webp",
             price: "$799.99",
         },
+        {
+            name: "Smartwatch",
+            image: "https://img.drz.lazcdn.com/static/lk/p/891c2ddbc42c7dda30d5d6380cba4d3f.jpg_400x400q80.jpg_.webp",
+            price: "$20",
+        },
+        {
+            name: "Wireless Earbuds",
+            image: "https://img.drz.lazcdn.com/static/lk/p/32d7ee2b39f1cd47a7cdb2a4c5b31b90.jpg_400x400q80.jpg",
+            price: "$15",
+        },
+        {
+            name: "Smartphone",
+            image: "https://img.drz.lazcdn.com/static/lk/p/c3bea0fba0adaa44d2375460a676b91d.jpg_400x400q80.jpg_.webp",
+            price: "$999",
+        },
     ];
 
     return (
@@ -38,11 +53,12 @@ const HomePage = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: 3,
-                gap: 4,
+                padding: 4,
+                gap: 6,
                 position: "relative",
             }}
         >
+            {/* Overlay */}
             <Box
                 sx={{
                     position: "absolute",
@@ -50,14 +66,19 @@ const HomePage = () => {
                     left: 0,
                     width: "100%",
                     height: "100%",
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    backgroundColor: "rgba(0, 0, 0, 0.6)",
                     zIndex: 1,
                 }}
             />
 
             {/* Hero Section */}
             <Box
-                sx={{ textAlign: "center", color: "white", zIndex: 2 }}
+                sx={{
+                    textAlign: "center",
+                    color: "white",
+                    zIndex: 2,
+                    maxWidth: "800px",
+                }}
             >
                 <Typography
                     variant="h2"
@@ -67,8 +88,9 @@ const HomePage = () => {
                     transition={{ duration: 1 }}
                     sx={{
                         fontWeight: "bold",
-                        fontSize: { xs: "2rem", md: "3.5rem" },
-                        textShadow: "2px 2px 8px rgba(0, 0, 0, 0.7)",
+                        textShadow: "3px 3px 10px rgba(0, 0, 0, 0.8)",
+                        lineHeight: 1.2,
+                        mt: 6,
                     }}
                 >
                     Welcome to TrendyShop
@@ -81,10 +103,12 @@ const HomePage = () => {
                     transition={{ duration: 1, delay: 0.5 }}
                     sx={{
                         mt: 2,
-                        textShadow: "1px 1px 6px rgba(0, 0, 0, 0.7)",
+                        fontSize: { xs: "1rem", md: "1.5rem" },
+                        textShadow: "2px 2px 8px rgba(0, 0, 0, 0.8)",
+                        lineHeight: 1.5,
                     }}
                 >
-                    Explore the future of shopping, one click at a time.
+                    Discover the latest gadgets and accessories, tailored to your style.
                 </Typography>
                 <Button
                     variant="contained"
@@ -92,24 +116,31 @@ const HomePage = () => {
                     color="secondary"
                     component={Link}
                     sx={{
-                        mt: 3,
-                        px: 4,
-                        py: 1.5,
-                        fontSize: "1rem",
+                        mt: 2,
+                        px: 5,
+                        py: 1.8,
+                        fontSize: "1.2rem",
                         fontWeight: "bold",
+                        borderRadius: "8px",
+                        background: "linear-gradient(to right, #6a11cb, #2575fc)",
+                        '&:hover': {
+                            background: "linear-gradient(to right, #2575fc, #6a11cb)",
+                        },
                     }}
                 >
                     Start Shopping
                 </Button>
             </Box>
 
+            {/* Products Section */}
             <Typography
                 variant="h4"
                 sx={{
                     color: "white",
                     textAlign: "center",
                     zIndex: 2,
-                    textShadow: "2px 2px 8px rgba(0, 0, 0, 0.7)",
+                    textShadow: "3px 3px 10px rgba(0, 0, 0, 0.8)",
+                    fontSize: { xs: "2rem", md: "2.5rem" },
                 }}
                 component={motion.div}
                 initial={{ opacity: 0 }}
@@ -132,24 +163,38 @@ const HomePage = () => {
                     >
                         <Box
                             sx={{
-                                width: "330px",
-                                height: "410px",
-                                borderRadius: 3,
+                                width: "320px",
+                                height: "420px",
+                                borderRadius: 4,
                                 overflow: "hidden",
-                                boxShadow: 8,
-                                backgroundColor: "#f9f9f9",
+                                boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+                                backgroundColor: "#fff",
                                 display: "flex",
                                 flexDirection: "column",
                                 justifyContent: "space-between",
+                                transition: "transform 0.3s ease",
+                                '&:hover': {
+                                    transform: "translateY(-10px)",
+                                },
                             }}
                         >
                             <img
                                 src={product.image}
                                 alt={product.name}
-                                style={{ width: "100%", display: "block", height: "65%", objectFit: "cover" }}
+                                style={{
+                                    width: "100%",
+                                    height: "70%",
+                                    objectFit: "cover",
+                                    borderBottom: "2px solid #f0f0f0",
+                                }}
                             />
-                            <Box sx={{ p: 2, textAlign: "center" }}>
-                                <Typography variant="h6" sx={{ fontWeight: "bold", color: "#333" }}>
+                            <Box
+                                sx={{
+                                    p: 2,
+                                    textAlign: "center",
+                                }}
+                            >
+                                <Typography variant="h6" sx={{ fontWeight: "bold", color: "#333", mb: 1 }}>
                                     {product.name}
                                 </Typography>
                                 <Typography variant="body1" sx={{ fontWeight: "medium", color: "#777" }}>
@@ -157,8 +202,16 @@ const HomePage = () => {
                                 </Typography>
                                 <Button
                                     variant="contained"
-                                    color="primary"
-                                    sx={{ mt: 2, px: 3, fontSize: "0.9rem" }}
+                                    sx={{
+                                        mt: 0,
+                                        px: 3,
+                                        fontSize: "1rem",
+                                        borderRadius: "6px",
+                                        background: "linear-gradient(to right, #6a11cb, #2575fc)",
+                                        '&:hover': {
+                                            background: "linear-gradient(to right, #2575fc, #6a11cb)",
+                                        },
+                                    }}
                                 >
                                     Buy Now
                                 </Button>
@@ -168,7 +221,6 @@ const HomePage = () => {
                 ))}
             </Grid>
         </Box>
-
     );
 };
 

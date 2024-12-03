@@ -19,7 +19,13 @@ const Cart = () => {
   const { cart, updateQuantity, removeFromCart, totalCost } = useCart();
 
   return (
-    <Box sx={{ padding: '20px', minHeight: '100vh', backgroundColor: '#f9f9f9' }}>
+    <Box
+      sx={{
+        paddingTop: '70px',
+        minHeight: '100vh',
+        background: 'linear-gradient(to right, #e0eafc, #cfdef3)',
+      }}
+    >
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -29,7 +35,7 @@ const Cart = () => {
           variant="h4"
           align="center"
           gutterBottom
-          sx={{ fontWeight: 'bold', color: 'primary.main' }}
+          sx={{ fontWeight: 'bold', color: '#1e3c72' }}
         >
           Shopping Cart
         </Typography>
@@ -46,18 +52,31 @@ const Cart = () => {
           </Typography>
         </motion.div>
       ) : (
-        <TableContainer component={Paper} elevation={3} sx={{ mt: 3 }}>
+        <TableContainer
+          component={Paper}
+          elevation={4}
+          sx={{ mt: 3, borderRadius: 2, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
+        >
           <Table>
             <TableHead>
-              <TableRow sx={{ backgroundColor: 'primary.light' }}>
-                <TableCell align="left" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>Product</TableCell>
-                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>Price</TableCell>
-                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>Quantity</TableCell>
-                <TableCell align="right" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>Total</TableCell>
-                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'primary.contrastText' }}>Actions</TableCell>
+              <TableRow sx={{ backgroundColor: '#1e3c72' }}>
+                <TableCell align="left" sx={{ fontWeight: 'bold', color: 'white' }}>
+                  Product
+                </TableCell>
+                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'white' }}>
+                  Price
+                </TableCell>
+                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'white' }}>
+                  Quantity
+                </TableCell>
+                <TableCell align="right" sx={{ fontWeight: 'bold', color: 'white' }}>
+                  Total
+                </TableCell>
+                <TableCell align="center" sx={{ fontWeight: 'bold', color: 'white' }}>
+                  Actions
+                </TableCell>
               </TableRow>
             </TableHead>
-
             <TableBody>
               <AnimatePresence>
                 {cart.map((item, index) => (
@@ -69,17 +88,12 @@ const Cart = () => {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
                     sx={{
-                      backgroundColor: index % 2 === 0 ? '#f5f5f5' : '#ffffff',
-                      '&:hover': { backgroundColor: '#f0f0f0' },
+                      backgroundColor: index % 2 === 0 ? '#f7f9fc' : '#ffffff',
+                      '&:hover': { backgroundColor: '#eef2f7' },
                     }}
                   >
-                    {/* Product */}
                     <TableCell align="left">{item.name}</TableCell>
-
-                    {/* Price */}
                     <TableCell align="center">${item.price}</TableCell>
-
-                    {/* Quantity */}
                     <TableCell align="center">
                       <TextField
                         type="number"
@@ -88,16 +102,10 @@ const Cart = () => {
                         value={item.quantity}
                         onChange={(e) => updateQuantity(item.id, +e.target.value)}
                         inputProps={{ min: 1 }}
-                        sx={{ width: '70px' }}
+                        sx={{ width: '80px' }}
                       />
                     </TableCell>
-
-                    {/* Total */}
-                    <TableCell align="right">
-                      ${item.price * item.quantity}
-                    </TableCell>
-
-                    {/* Actions */}
+                    <TableCell align="right">${(item.price * item.quantity).toFixed(2)}</TableCell>
                     <TableCell align="center">
                       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                         <Button
@@ -106,7 +114,7 @@ const Cart = () => {
                           onClick={() => removeFromCart(item.id)}
                           sx={{
                             transition: 'background-color 0.3s',
-                            '&:hover': { backgroundColor: 'error.main', color: 'white' },
+                            '&:hover': { backgroundColor: '#ff1744', color: 'white' },
                           }}
                         >
                           Remove
@@ -117,8 +125,6 @@ const Cart = () => {
                 ))}
               </AnimatePresence>
             </TableBody>
-
-
           </Table>
         </TableContainer>
       )}
@@ -131,9 +137,9 @@ const Cart = () => {
         <Typography
           variant="h5"
           align="right"
-          sx={{ marginTop: '20px', fontWeight: 'bold', color: 'primary.main' }}
+          sx={{ marginTop: '20px', fontWeight: 'bold', color: '#1e3c72' }}
         >
-          Total Cost: ${totalCost}
+          Total Cost: ${totalCost.toFixed(2)}
         </Typography>
       </motion.div>
     </Box>
@@ -141,4 +147,3 @@ const Cart = () => {
 };
 
 export default Cart;
-

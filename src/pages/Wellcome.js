@@ -18,8 +18,8 @@ const Home = () => {
       }}
     >
       <Container
-        maxWidth="sm"
         sx={{
+          width: '130vh',
           background: 'rgba(255, 255, 255, 0.8)',
           backdropFilter: 'blur(15px)',
           borderRadius: 5,
